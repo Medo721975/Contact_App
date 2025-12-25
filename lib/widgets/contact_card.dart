@@ -21,17 +21,15 @@ class ContactCard extends StatelessWidget {
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppColors.cardBackground,
-        borderRadius: BorderRadius.circular(16),
+        color: const Color(0xFFFFF1D4),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildAvatarWithName(),
           const SizedBox(height: 12),
-          _buildContactInfo(),
-          const SizedBox(height: 12),
-          _buildDeleteButton(context),
+          _buildContactInfoAndDelete(context),
         ],
       ),
     );
@@ -44,7 +42,7 @@ class ContactCard extends StatelessWidget {
           width: double.infinity,
           height: 120,
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: const Color(0xFFFFF1D4),
             borderRadius: BorderRadius.circular(12),
           ),
           child: ClipRRect(
@@ -90,11 +88,11 @@ class ContactCard extends StatelessWidget {
     );
   }
 
-  Widget _buildContactInfo() {
+  Widget _buildContactInfoAndDelete(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color(0xFFFFF1D4),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -144,47 +142,43 @@ class ContactCard extends StatelessWidget {
               ),
             ],
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDeleteButton(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 161,
-        height: 31,
-        child: ElevatedButton(
-          onPressed: () => _showDeleteConfirmation(context),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFFF93E3E),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            elevation: 0,
-            padding: EdgeInsets.zero,
-          ),
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.delete,
-                color: Color(0xFFFFFFFF),
-                size: 16,
-              ),
-              SizedBox(width: 6),
-              Text(
-                'Delete',
-                style: TextStyle(
-                  color: Color(0xFFFFFFFF),
-                  fontSize: 12.5,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Inter',
+          const SizedBox(height: 12),
+          SizedBox(
+            width: 161,
+            height: 31,
+            child: ElevatedButton(
+              onPressed: () => _showDeleteConfirmation(context),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFF93E3E),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
+                elevation: 0,
+                padding: EdgeInsets.zero,
               ),
-            ],
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.delete,
+                    color: Color(0xFFFFFFFF),
+                    size: 16,
+                  ),
+                  SizedBox(width: 6),
+                  Text(
+                    'Delete',
+                    style: TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Inter',
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

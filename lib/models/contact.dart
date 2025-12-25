@@ -10,6 +10,7 @@ class Contact {
     required this.phone,
     this.imagePath,
   });
+
   Contact copyWith({
     String? name,
     String? email,
@@ -23,6 +24,7 @@ class Contact {
       imagePath: imagePath ?? this.imagePath,
     );
   }
+
   Map<String, dynamic> toMap() {
     return {
       'name': name,
@@ -31,6 +33,7 @@ class Contact {
       'imagePath': imagePath,
     };
   }
+
   factory Contact.fromMap(Map<String, dynamic> map) {
     return Contact(
       name: map['name'] ?? '',
